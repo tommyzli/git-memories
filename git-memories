@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+AUTHOR=$(git config --global user.name)
+YEARS=${1:-1}
+MONTHS=${2:-0}
+DATE=$(date -v-${YEARS}y -v-${MONTHS}m +%F)
+
+git log master --author="${AUTHOR}" --after="${DATE} 00:00" --before="${DATE} 23:59" -p -1
